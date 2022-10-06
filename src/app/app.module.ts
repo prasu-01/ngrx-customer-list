@@ -3,9 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { customersReducer } from './store/reducers/customer.reducer';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { sortReducer } from './store/reducers/sort.reducer';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { sortReducer } from './store/reducers/sort.reducer';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({ sort: sortReducer })
   ],
   providers: [],

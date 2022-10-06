@@ -37,7 +37,6 @@ export class CustomerListComponent implements OnInit, OnDestroy {
     });
 
     this.store.select((state) => state).subscribe((data: any) => {
-      console.log("comp", data.sort);
       this.sortData$ = data.sort.data.map((s: any) => {
         return {...s, id: uuidv4()};
       });

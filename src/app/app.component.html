@@ -6,6 +6,21 @@
     <div class="row">
 
       <ng-container>
+
+        <div class="col-3 mx-auto">
+          <div class="mb-3">
+            <input
+              [formControl]="searchControl"
+              type="search"
+              class="form-control"
+              id="search"
+              placeholder="Search..."
+              aria-describedby="filter"
+            />
+          </div>
+        </div>
+
+        
         <div class="col-12">
           <customer-list 
             [header]="header"

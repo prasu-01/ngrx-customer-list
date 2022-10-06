@@ -39,6 +39,20 @@ export const selectSortedCustomerList = createSelector(
     }
 );
 
+
+
+export const selectFilterQuery = createSelector(
+    selectSortTableState, 
+    (state: SortTableState) => state.filterQuery
+  );
+
+
+export const selectFilterBy = createSelector(
+    selectSortTableState, 
+    (state: SortTableState) => state.filterBy
+);
+
+
 function compare(paramA: string, paramB: string, sortOrder: string): number {
     if(paramA > paramB) {
         return sortOrder === 'asc' ? 1 : -1;

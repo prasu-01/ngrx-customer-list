@@ -18,4 +18,5 @@ export const setSortKey = createAction(
 export const resetCustomerList = createAction(
     CustomerActionTypes.RESET_CUSTOMERLIST
 );
-export const setFilterBy = createAction(CustomerActionTypes.SET_FILTER_BY, props<{ filters: { filterBy: string[]; query: string } }>()); 
+export const setFilterBy = createAction(
+    CustomerActionTypes.SET_FILTER_BY, props<{ filters: { filterBy: string[]; query: string } }>()); 

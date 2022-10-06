@@ -1,9 +1,12 @@
 import { Action, createReducer, on } from "@ngrx/store"
-import {  setSortKey } from "../actions/customer.actions";
+import { filter } from "rxjs";
+import {  setFilterBy, setSortKey } from "../actions/customer.actions";
 import {  Customer, SortTableState } from "../models/customer-list.model";
 import {  SORT_INITIAL_STATE } from "../states/customer.state"
 
 export const sortFeatureKey = 'sortCustomerList';
+export const INITIAL_FILTER_KEY = { filterKey: '', query: '' };
+
 
 
  const _sortReducer = createReducer(
@@ -22,7 +25,6 @@ export const sortFeatureKey = 'sortCustomerList';
             return compare(paramA, paramB, sortOrder);
         });
         data = sortedData;
-        console.log("sort sele asc", sortedData)    
     } else {
             sortOrder = setSortOrder(state.sortOrder);
             if(state.sortOrder !== '') {
@@ -32,7 +34,6 @@ export const sortFeatureKey = 'sortCustomerList';
                     return compare(paramA, paramB, sortOrder);
                 });
                 data = sortedData;
-                console.log("sort sele", sortedData)  
             }        
        }
  
@@ -44,6 +45,32 @@ export const sortFeatureKey = 'sortCustomerList';
       }
 
   }),
+
+  on(setFilterBy, (state, { filters }) => {
+
+    let filteredData = state.data;
+    let data = filteredData;
+
+    if(filters.query === ''){
+        data = SORT_INITIAL_STATE.data;
+    }
+    if(filters.query !== ''){
+        filteredData = state.data.filter((item: any) => {
+            return item[filters.filterBy[0]]?.toLowerCase().includes(filters.query);
+        });
+
+        data = [...filteredData];
+    }
+
+    return {
+        ...state,
+        data,
+        sortOrder: '', 
+        sortKey: '', 
+        filterQuery: filters.query, 
+        filterBy: filters.filterBy,
+    }
+  })
 );
 
 
