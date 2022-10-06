@@ -1,11 +1,13 @@
-import { Customer } from "../models/customer-list.model";
+import { Customer, SortTableState } from "../models/customer-list.model";
 import  { v4 as uuidv4 } from 'uuid';
 
 export interface CustomerState  {
   customer: Customer[]
 }
 
-export const initialState: CustomerState = 
+
+
+export const CUSTOMER_INITIAL_STATE: CustomerState = 
 {
   customer: [
     {
@@ -106,3 +108,10 @@ export const initialState: CustomerState =
    ],
 }
 
+export const SORT_INITIAL_STATE: SortTableState = {
+  data: CUSTOMER_INITIAL_STATE.customer,
+  sortOrder: '',
+  sortKey: '',
+  filterQuery: '',
+  filterBy: [],
+};

@@ -1,14 +1,30 @@
-<table>
+<table class="table table-secondary shadow">
     <thead>
         <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Status</th>
-        </tr>
+            <th scope="col" *ngFor="let headerItem of header" (click)="onSort(headerItem)">
+              <div class="d-flex">
+                {{ headerItem.displayName }}
+      
+                <div class="d-flex flex-column ms-2" *ngIf="headerItem.hasSort">
+                  <i
+                    class="bi bi-caret-up-fill"
+                    [class.sort-header-active]="sortOrder$ === 'asc' && headerItem.key === sortKey$"
+                  >
+                  </i>
+                  <i
+                    class="bi bi-caret-down-fill"
+                    [class.sort-header-active]="sortOrder$ === 'desc' && headerItem.key === sortKey$"
+                  >
+                  </i>
+                </div>
+
+            </div>
+            </th>
+          </tr>
+
     </thead>
     <tbody>
-        <tr *ngFor="let customer of customers$">
+        <tr *ngFor="let customer of sortData$">
             <td>{{customer.id}}</td>
             <td>{{customer.firstName}}</td>
             <td>{{customer.lastName}}</td>

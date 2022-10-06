@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { customersReducer } from './store/reducers/customer.reducer';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { sortReducer } from './store/reducers/sort.reducer';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { CustomerListComponent } from './customer-list/customer-list.component';
   ],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({ customer: customersReducer })
+    StoreModule.forRoot({ sort: sortReducer })
   ],
   providers: [],
   bootstrap: [AppComponent]

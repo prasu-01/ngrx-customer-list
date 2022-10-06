@@ -1,8 +1,21 @@
-<div class="row">
-  <div class="col-md-3">
-    <h3>Customers List</h3>
-    <customer-list></customer-list>
+
+<h1 class="text-center my-4">Customer List</h1>
+
+<ng-container>
+  <div class="container">
+    <div class="row">
+
+      <ng-container>
+        <div class="col-12">
+          <customer-list 
+            [header]="header"
+          >
+          </customer-list>
+        </div>
+      </ng-container>
+
+    </div>
   </div>
-</div>
+</ng-container>
 
 
