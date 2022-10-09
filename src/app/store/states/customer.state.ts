@@ -1,5 +1,4 @@
 import { Customer, SortTableState } from "../models/customer-list.model";
-import  { v4 as uuidv4 } from 'uuid';
 
 export interface CustomerState  {
   customer: Customer[]
